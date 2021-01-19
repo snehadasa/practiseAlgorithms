@@ -1,6 +1,9 @@
-//package LeetCode.Easy;
-//
-//public class Preorder {
+package LeetCode.Easy;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Preorder {
 //    Given an n-ary tree, return the preorder traversal of its nodes' values.
 //
 //    Nary-Tree input serialization is represented in their level order traversal, each group of children is separated
@@ -33,27 +36,48 @@
 //    The height of the n-ary tree is less than or equal to 1000
 //    The total number of nodes is between [0, 10^4]
 //
-//    /*
-//// Definition for a Node.
-//class Node {
-//    public int val;
-//    public List<Node> children;
-//
-//    public Node() {}
-//
-//    public Node(int _val) {
-//        val = _val;
-//    }
-//
-//    public Node(int _val, List<Node> _children) {
-//        val = _val;
-//        children = _children;
-//    }
-//};
-//*/
-//
-//        public List<Integer> preorder(Node root) {
-//
-//        }
-//
-//}
+
+    // Definition for a Node.
+    public class Node {
+        public int val;
+        public List<Node> children;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, List<Node> _children) {
+            val = _val;
+            children = _children;
+        }
+    }
+
+    //method 1
+    void childrenToList(Node node, List<Integer> ans) {
+        if (node == null) return;
+        ans.add(node.val);
+        node.children.forEach(child -> childrenToList(child, ans));
+    }
+
+    public List<Integer> preorder1(Node root) {
+        List<Integer> result = new ArrayList<>();
+        childrenToList(root, result);
+        return result;
+    }
+
+        //method2
+    List<Integer> res = new ArrayList<>();
+
+    public List<Integer> preorder(Node root) {
+        if (root == null) return res;
+
+        res.add(root.val);
+        for (Node node:root.children) {
+            preorder(node);
+        }
+        return res;
+    }
+}

@@ -73,7 +73,7 @@ public class DiagonalSum {
         int[][] mat = {{1,2,3},{4,5,6},{7,8,9}};
         int[][] mat2 = {{5}};
         DiagonalSum res = new DiagonalSum();
-        System.out.println(res.diagonalSum1(mat));
-        System.out.println(res.diagonalSum1(mat2));
+        System.out.println(res.diagonalSum(mat));
+        System.out.println(res.diagonalSum(mat2));
     }
 }
