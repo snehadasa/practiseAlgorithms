@@ -25,7 +25,12 @@ class Node<T> {
     T value;
 }
 
-public class MyQueue<T> {
+class MyQueue<T> {
+
+    Node<T> myList = null;
+    Node<T> endPointerOfMyList = null;
+    int count = 0;
+
     public boolean add(T value) {
          Node<T> temp;
         if (myList == null) {
@@ -50,10 +55,10 @@ public class MyQueue<T> {
         }
 
         Node<T> temp = myList;
-        myList = myList.getNext();
-        temp.next = null;
+        myList = myList.getNext(); //changing the head of myList to next element.
+        temp.next = null;  //setting the link of temp to null
         count--;
-        return temp.getValue();
+        return temp.getValue();  //deleted node from the list
     }
 
     public int size() {
@@ -70,7 +75,5 @@ public class MyQueue<T> {
         return (size() == 0);
     }
 
-    Node<T> myList = null;
-    Node<T> endPointerOfMyList = null;
-    int count = 0;
+
 }

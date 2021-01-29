@@ -45,11 +45,15 @@ public class NextGreaterElement {
 //        Arrays.sort(nums2);
         List<Integer> res = new ArrayList<>();
         for (int i = 0; i < nums1.length; i++) {
-            int min = -1;
-            if (nums1[i] < nums2[i]) {
-                min = nums2[i];
+            for (int j = 0; j < nums2.length; j++) {
+                if (nums1[i] < nums2[j]) {
+                    res.add(nums2[j]);
+                    break;
+                } else {
+                    res.add(-1);
+                    break;
+                }
             }
-            res.add(min);
         }
         //list to Array
         int[] arr = new int[res.size()];

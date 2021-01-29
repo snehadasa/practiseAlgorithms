@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Stack<T> {
     public int size() {
+
         return myList.size();
     }
 
@@ -13,10 +14,12 @@ public class Stack<T> {
     }
 
     public T pop() {
+
         return myList.remove(myList.size() - 1);
     }
 
     public boolean isEmpty() {
+
         return myList.isEmpty();
     }
 

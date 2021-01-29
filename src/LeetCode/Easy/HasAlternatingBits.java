@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode.Easy;
 
 public class HasAlternatingBits {
 //    Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.
