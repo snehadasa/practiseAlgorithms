@@ -43,8 +43,7 @@ package LeetCode.Easy;
 //    At most 100 calls will be made to push, pop, peek, and empty.
 //    All the calls to pop and peek are valid.
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 
 class MyQueue {
@@ -55,43 +54,58 @@ class MyQueue {
 //      int param_3 = obj.peek();
 //      boolean param_4 = obj.empty();
 
-
+    Stack<Integer> stackQue1;
+    Stack<Integer> stackQue2;
     /**
      * Initialize your data structure here.
      */
     public MyQueue() {
+        stackQue1 = new Stack<>();
+        stackQue2 = new Stack<>();
     }
 
     /**
      * Push element x to the back of queue.
      */
     public void push(int x) {
-
+       stackQue1.push(x);
     }
 
     /**
      * Removes the element from in front of queue and returns that element.
      */
     public int pop() {
-
+        if (stackQue2.empty()) {
+            while (!stackQue1.empty()) {
+                stackQue2.add(stackQue1.pop());
+            }
+        }
+        return stackQue2.pop();
     }
 
     /**
      * Get the front element.
      */
     public int peek() {
-
+        if (stackQue2.empty()) {
+            while (!stackQue1.empty()) {
+                stackQue2.add(stackQue1.pop());
+            }
+        }
+        return stackQue2.peek();
     }
 
     public int size() {
+        return stackQue1.size() + stackQue2.size();
     }
 
     /**
      * Returns whether the queue is empty.
      */
     public boolean empty() {
-        return (size() == 0);
+        return stackQue1.empty() && stackQue2.empty();
     }
+
 }
 
 
