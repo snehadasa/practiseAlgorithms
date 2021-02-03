@@ -36,11 +36,12 @@ public class FindShortestSubarray {
     public int findShortestSubArray1(int[] nums) {
         Map<Integer, Integer> countMap = new HashMap<>();
         for (int num: nums) {
-            if (countMap.containsKey(num)) {
-                int value = countMap.get(num);
-                countMap.put(num, 1+value);
-            } else
-                countMap.put(num, 1);
+//            if (countMap.containsKey(num)) {
+//                int value = countMap.get(num);
+//                countMap.put(num, 1+value);
+//            } else
+//                countMap.put(num, 1);
+            countMap.put(num, countMap.getOrDefault(num, 0)+1);  //get count of elements in one line by using getOrDefault;
         }
 
         int maxFreq = -1;
@@ -86,8 +87,8 @@ public class FindShortestSubarray {
 
         for (int i = 0; i < nums.length; i++) {
             int x = nums[i];
-            if (left.get(x) == null) left.put(x, i);
-            right.put(x, i);
+            if (left.get(x) == null) left.put(x, i);   //for first elements if keys are not in map.
+            right.put(x, i);   //for last elements to add the last occurance of that element
             count.put(x, count.getOrDefault(x, 0) + 1);
         }
 
