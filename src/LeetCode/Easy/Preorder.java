@@ -2,6 +2,7 @@ package LeetCode.Easy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Preorder {
 //    Given an n-ary tree, return the preorder traversal of its nodes' values.
@@ -79,5 +80,30 @@ public class Preorder {
             preorder(node);
         }
         return res;
+    }
+
+    //iterative approach
+    public List<Integer> preorder2(Node root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            Node node = stack.pop();
+            if (node != null) {
+                result.add(node.val);
+            } else {
+                continue;
+            }
+            if (node.children == null || node.children.size() == 0) {
+                continue;
+            }
+            int size = node.children.size();
+            for (int i = size - 1; i >= 0; i--) {
+                Node child = node.children.get(i);
+                stack.push(child);
+            }
+        }
+
+        return result;
     }
 }

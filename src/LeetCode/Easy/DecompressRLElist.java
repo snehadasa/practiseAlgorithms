@@ -53,7 +53,7 @@ public class DecompressRLElist {
         int [] nums = {1, 1, 2, 3};
         int [] nums2 = {1, 2, 3, 4};
         DecompressRLElist res = new DecompressRLElist();
-        System.out.println(Arrays.toString(res.decompressRLElist(nums)));
+        //System.out.println(Arrays.toString(res.decompressRLElist(nums)));
         System.out.println(Arrays.toString(res.decompressRLElist(nums2)));
     }
 }
