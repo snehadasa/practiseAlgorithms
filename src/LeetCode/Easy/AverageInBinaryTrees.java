@@ -1,7 +1,6 @@
 package LeetCode.Easy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AverageInBinaryTrees {
 //    Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
@@ -35,24 +34,68 @@ public class AverageInBinaryTrees {
             this.left = left;
             this.right = right;
         }
+
+        boolean isLeaf() {
+            return left == null ? right == null : false;
+        }
     }
 
-    int ans;
-    public int depth(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        //ans = Math.max(ans, Math.max(depth(root.left), depth(root.right)));
-        return Math.max(depth(root.left), depth(root.right)) + 1;
+
+    public List<Double> countZeros1(TreeNode root) {
+       if (root == null) {
+           return null;
+       }
+        List<Double> result = new ArrayList<>();
+       Queue<TreeNode> queue = new ArrayDeque<>();   //add all elements to a queue
+       queue.add(root);
+
+       while (!queue.isEmpty()) {
+           List<TreeNode> countNodesInEachLevel = new ArrayList<>();  //list to add count of elements ineach level
+           double sum = 0;
+
+           while (!queue.isEmpty()) {    //elements that are removed from queue in each level are added to list.
+               countNodesInEachLevel.add(queue.poll());  //By this we can determine number of elements in each level.
+           }
+
+           for (TreeNode temp: countNodesInEachLevel) {
+               if (temp.left != null) {
+                   queue.add(temp.left);
+               }
+               if (temp.right != null) {
+                   queue.add(temp.right);
+               }
+               sum += root.val;
+           }
+           result.add(sum / countNodesInEachLevel.size());
+       }
+       return result;
     }
-    public List<Double> averageOfLevels(TreeNode root) {
-        List<Double> res = new ArrayList<>();
+
+    public List<Double> countZeros(TreeNode root) {
+        List<Double> result = new ArrayList<>();
         if (root == null) {
-            return res;
+            return result;
         }
-        int avg = 0;
-        for (int i = 0; i < depth(root); i++) {
-            avg = averageOfLevels(root.left) + averageOfLevels(root.right) /
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            double sum = 0, count = 0;
+            Queue<TreeNode> countQueue = new ArrayDeque<>();
+            while (!queue.isEmpty()) {
+                TreeNode poppedElement = queue.poll();
+                sum += poppedElement.val;
+                count++;
+                if (poppedElement.left != null) {
+                    countQueue.add(poppedElement.left);
+                }
+                if (poppedElement.right != null) {
+                    countQueue.add(poppedElement.right);
+                }
+            }
+            queue = countQueue;
+            result.add(sum / count);
         }
+        return result;
     }
+
 }
