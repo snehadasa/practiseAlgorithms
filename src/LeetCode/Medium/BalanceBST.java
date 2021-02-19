@@ -1,6 +1,5 @@
 package LeetCode.Medium;
 
-import LeetCode.Easy.DiameterOfBinaryTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,5 +48,9 @@ public class BalanceBST {
         List tree = new ArrayList();
         bstToList(root, tree);
         return createBST(tree, 0, tree.size()-1);
+    }
+
+    public static void main(String[] args) {
+        BalanceBST res = new BalanceBST();
     }
 }

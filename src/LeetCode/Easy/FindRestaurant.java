@@ -47,27 +47,28 @@ public class FindRestaurant {
 //    All the stings of list2 are unique.
 
     public String[] findRestaurant(String[] list1, String[] list2) {
-        Map<Integer, List < String >> map = new HashMap();
+        HashMap<Integer, List<String>> map = new HashMap<>();
 
-        for (int i = 0; i< list1.length; i++) {
+        for (int i = 0; i < list1.length; i++) {
             for (int j = 0; j < list2.length; j++) {
                 if (list1[i].equals(list2[j])) {
-                    if (!map.containsKey(i+j)) {
-                        map.put(i+j, new ArrayList<>());
-                    } else {
-                        map.get(i+j).add(list1[i]);
+                    if (!map.containsKey(i + j)) {
+                        map.put(i + j, new ArrayList<>());
                     }
+                    map.get(i + j).add(list1[i]);
                 }
             }
         }
 
+        //to find minimun index sum (i+j)
         int minIndexSum = Integer.MAX_VALUE;
 
-        for (Integer integer : map.keySet()) {
-            minIndexSum = Math.min(minIndexSum, integer);
+        for (Integer key : map.keySet()) {
+            minIndexSum = Math.min(minIndexSum, key);
         }
         String[] res = new String[map.get(minIndexSum).size()];
-        return res;
+
+        return map.get(minIndexSum).toArray(res);
     }
 
     public String[] findRestaurant2(String[] list1, String[] list2) {
@@ -98,5 +99,12 @@ public class FindRestaurant {
             }
         }
         return result.toArray(new String[result.size()]);
+    }
+
+    public static void main(String[] args) {
+        FindRestaurant res = new FindRestaurant();
+        String[] list1 = {"Shogun","Tapioca Express","Burger King","KFC"};
+        String[] list2 = {"KNN","KFC","Burger King","Tapioca Express","Shogun"};
+        System.out.println(Arrays.toString(res.findRestaurant(list1, list2)));
     }
 }

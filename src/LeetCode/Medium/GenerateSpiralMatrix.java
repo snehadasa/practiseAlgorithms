@@ -36,7 +36,7 @@ public class GenerateSpiralMatrix {
         int[] perimeter = new int[4];
         List<Integer> numbers = new ArrayList<>();
         int n = matrix.length;
-        for (int i = 0 i <= (n+1)/2; )
+        for (int i = 0; i <= (n+1)/2; )
             for (int col = 0; col < matrix[0].length; col++) {
                 numbers.add(matrix[0][col]);
             }
