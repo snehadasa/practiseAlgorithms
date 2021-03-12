@@ -37,10 +37,10 @@ public class Fibonachi {
             return n;
         }
 
-        return fib(n - 1) + fib(n - 2);
+        return fib1(n - 1) + fib1(n - 2);
     }
 
-    public int fib(int n) {
+    public int fib2(int n) {
       if (n == 0) return 0;
       if (n == 1) return 1;
 
@@ -52,6 +52,34 @@ public class Fibonachi {
           fibN1 = sum;
       }
       return sum;
+    }
+
+    public int fib(int n) {
+        int[] res = new int[n+1];
+        int result = 0;
+        res[0] = 0;
+        res[1] = 1;
+
+        for (int i = 2; i < n+1; i++) {
+            res[i] = res[i - 1] + res[i-2];
+        }
+
+        return res[n];
+    }
+
+    public int fib3(int n) {
+        int[] res = new int[n+1];
+        int result = 0;
+        if (res[n] != 0) {
+            return res[n];
+        }
+        if (n == 1 || n == 2) {
+            result = 1;
+        } else {
+            result = fib(n-1) + fib(n - 2);
+        }
+        res[n] = result;
+        return result;
     }
 
         public static void main(String[] args) {
