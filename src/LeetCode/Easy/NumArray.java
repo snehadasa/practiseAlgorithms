@@ -1,5 +1,8 @@
 package LeetCode.Easy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NumArray {
 
 //    Given an integer array nums, find the sum of the elements between indices left and right inclusive,
@@ -35,6 +38,7 @@ public class NumArray {
 //    At most 104 calls will be made to sumRange.
 
     public NumArray(int[] nums) {
+        List<Integer> list = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
 
         }

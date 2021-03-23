@@ -86,6 +86,19 @@ public class PrefixesDivBy5 {
         return ifDivBy5;
     }
 
+//    Approach :
+//    Whenever we left shift we double the element i.e if we left shift
+//10(Decimal -> 3) << 1 then it becomes 110(Decimal - > 6)
+//
+//            100(4) (num * 2)
+//            0 /
+//            10 (3)
+//            1\
+//            101(5) (num*2 + 1)
+//    And we are doing a whole mod with 5
+//
+//    So that the solution is within limits
+//    The number formed should be divisible by 5
     public List<Boolean> prefixesDivBy52(int[] A) {
         int num = 0;
         List<Boolean> ifDivBy5 = new ArrayList<>();
