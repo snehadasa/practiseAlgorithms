@@ -54,6 +54,8 @@ public class LongestWord {
            if (word.length() > res.length() || (word.length() == res.length() && word.compareTo(res) < 0)) {
                boolean prefixIsPresent = true;
 
+
+
                for (int i = 1; i < word.length(); i++) {
                    if (!wordSet.contains(word.substring(0,i))) {
                        prefixIsPresent = false;
