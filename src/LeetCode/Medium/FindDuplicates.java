@@ -61,7 +61,7 @@ public class FindDuplicates {
         }
 
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < count.length; i++) {
+        for (int i = 1; i < count.length; i++) {   // i is starting from 1 coz, 1 ≤ a[i] ≤ n (n = size of array)
             if (count[i] == 2) {
                 res.add(i);
             }

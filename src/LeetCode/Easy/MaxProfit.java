@@ -28,6 +28,7 @@ public class MaxProfit {
 //            1 <= prices.length <= 105
 //            0 <= prices[i] <= 104
 
+    //doesn't work
     public int maxProfit(int[] prices) {
         int profit = 0, max = 0;
         //List<Integer> =
@@ -50,14 +51,15 @@ public class MaxProfit {
             return 0;
         }
         int min = prices[0], maxProfit = 0;
-        for (int i = 1; i < prices.length; i++) {
-            if (min > prices[i]) {
+
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < min) {
                 min = prices[i];
             }
 
-            int profitBySellingAtI = prices[i] - min;
-            if (profitBySellingAtI > maxProfit) {
-                maxProfit = profitBySellingAtI;
+            int profitOnThatIndex = prices[i] - min;
+            if (profitOnThatIndex > maxProfit) {
+                maxProfit = profitOnThatIndex;
             }
         }
         return maxProfit;

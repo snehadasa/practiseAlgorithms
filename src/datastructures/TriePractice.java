@@ -1,17 +1,21 @@
 package datastructures;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Trie {
-    public Trie(char value) {
+public class TriePractice {
+
+    char value;
+    List<Trie> children;
+
+    public TriePractice(char value) {
         this.value = value;
     }
 
     public void Insert(String str) {
+
         if (str.length() == 0) {
             boolean containsNull = false;
-            for (Trie child : children) {
+            for (Trie child: children) {
                 if (child.value == '\0') {
                     containsNull = true;
                     break;
@@ -23,41 +27,32 @@ public class Trie {
         }
 
         boolean foundChar = false;
-        for (Trie child : children) {
-            if(child.value == str.charAt(0)) {
+        for (Trie child: children) {
+            if (child.value == str.charAt(0)) {
                 foundChar = true;
                 child.Insert(str.substring(1));
                 break;
             }
         }
-        if(!foundChar) {
+        if (!foundChar) {
             Trie child = new Trie(str.charAt(0));
             children.add(child);
             child.Insert(str.substring(1));
         }
     }
 
-    public boolean Contains(String s) {
-        char c = s.length() > 0 ? s.charAt(0) : '\0';
-        for (Trie child : children) {
-            if(child.value == c) {
+    public boolean Contains(String str) {
+        char c = str.length() > 0 ? str.charAt(0) : '\0';
+
+        for (Trie child: children) {
+            if (child.value == c) {
                 if (c == '\0') {
                     return true;
                 } else {
-                    return child.Contains(s.substring(1));
+                    return child.Contains(str.substring(1));
                 }
             }
         }
         return false;
-    }
-
-    char value;
-    List<Trie> children;
-
-
-    public static void main(String[] args) {
-        String s = "Sujith";
-        char value = 'd';
-        Trie trie = new Trie(value);
     }
 }
