@@ -23,16 +23,16 @@ public class NumEquivDominoPairs {
 //            1 <= dominoes[i][j] <= 9
 
     public int numEquivDominoPairs(int[][] dominoes) {
-       Map<Integer, Integer> map = new HashMap<>();
-       int result = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        int res = 0;
 
-       for (int[] item: dominoes) {
-           int value = item[0] < item[1] ? item[0] * 10 + item[1] : item[1] * 10 + item[0];
-           int count = map.getOrDefault(value, 0);
-           map.put(value , count+1);
-           result += count;
-       }
-       return result;
+        for (int item[]: dominoes) {
+            int val = item[0] < item[1] ? item[0] * 10 + item[1] : item[1] * 10 + item[0];
+            int count = map.getOrDefault(val, 0);
+            map.put(val, count+1);
+            res += count;
+        }
+        return res;
     }
 
     public static void main(String[] args) {
